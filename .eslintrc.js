@@ -22,6 +22,20 @@ module.exports = {
     'no-multiple-empty-lines': isDev ? 'warn' : 'error',
     'spaced-comment': isDev ? 'warn' : 'error',
     'no-debugger': isDev ? 'warn' : 'error',
-    'no-unused-vars': isDev ? 'warn' : 'error'
+    'no-unused-vars': isDev ? 'warn' : 'error',
+
+    // This helps prevent adding of unwanted libraries and enforces their correct use.
+    'no-restricted-imports': ['error', {
+      paths: [
+        {
+          name: 'lodash',
+          message: 'Use lodash-es instead!'
+        },
+        {
+          name: 'lodash-es',
+          message: 'Use tree-shakable pattern, ie. `import foo from lodash-es/foo`'
+        }
+      ]
+    }]
   }
 }
